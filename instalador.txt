@@ -1,0 +1,7 @@
+Entorno: python 2.7
+
+instalar las librerías siguientes:
+urllib
+urllib2
+re
+json
