@@ -1,0 +1,32 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.tlantic.plugins.socket": {
+            "PACKAGE_NAME": "com.tlantic.socketdemo"
+        },
+        "cordova-plugin-websocket": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/com.tlantic.plugins.socket/www/socket.js",
+            "id": "com.tlantic.plugins.socket.Socket",
+            "pluginId": "com.tlantic.plugins.socket",
+            "clobbers": [
+                "window.tlantic.plugins.socket"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "com.tlantic.plugins.socket": "0.3.0",
+        "cordova-plugin-websocket": "0.12.2"
+    }
+}

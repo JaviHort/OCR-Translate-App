@@ -1,7 +1,7 @@
-Entorno: python 2.7
+# Entorno: Python 2.7
 
-instalar las librerías siguientes:
-urllib
-urllib2
-re
-json
+# Instalar librerías
+
+$ pip install tesserocr
+$ pip install opencv-python
+$ pip install googletrans

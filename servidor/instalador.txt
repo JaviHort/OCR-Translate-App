@@ -1,0 +1,10 @@
+Entorno: python 2.7
+
+Traductor:
+Librerías usadas
+googletrans
+
+OCR:
+Librerías usadas
+tesserocr
+opencv
