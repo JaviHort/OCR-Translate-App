@@ -4,29 +4,66 @@
         "uninstalled": []
     },
     "config_munge": {
-        "files": {}
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Camera\"><param name=\"browser-package\" value=\"Camera\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
     },
     "installed_plugins": {
-        "com.tlantic.plugins.socket": {
+        "cordova-plugin-websocket": {
             "PACKAGE_NAME": "com.tlantic.socketdemo"
         },
-        "cordova-plugin-websocket": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
     "dependent_plugins": {},
     "modules": [
         {
-            "file": "plugins/com.tlantic.plugins.socket/www/socket.js",
-            "id": "com.tlantic.plugins.socket.Socket",
-            "pluginId": "com.tlantic.plugins.socket",
+            "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+            "id": "cordova-plugin-camera.Camera",
+            "pluginId": "cordova-plugin-camera",
             "clobbers": [
-                "window.tlantic.plugins.socket"
+                "Camera"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+            "id": "cordova-plugin-camera.CameraPopoverOptions",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "CameraPopoverOptions"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-camera/www/Camera.js",
+            "id": "cordova-plugin-camera.camera",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "navigator.camera"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-camera/src/browser/CameraProxy.js",
+            "id": "cordova-plugin-camera.CameraProxy",
+            "pluginId": "cordova-plugin-camera",
+            "runs": true
         }
     ],
     "plugin_metadata": {
-        "com.tlantic.plugins.socket": "0.3.0",
-        "cordova-plugin-websocket": "0.12.2"
+        "cordova-plugin-websocket": "0.12.2",
+        "cordova-plugin-compat": "1.2.0",
+        "cordova-plugin-camera": "2.4.1"
     }
 }

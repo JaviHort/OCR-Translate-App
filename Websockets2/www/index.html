@@ -1,96 +1,135 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Mi App</title>
-    </head>
-    <body>
-        <div class="app">
-            <h3 id='mostrarDatos'>-- Estado conexión Socket --</h3>
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-            <div>
-            	<br>
-            	<!--button id="boton_conectar" onclick="doConnect()">Connect</button><br><br>
-            	<button onclick="sendText()">Send 'Viva el vino'</button><br><br>
-              <button onclick="sendImage()">Send image</button><br><br>
-              <button onclick="doDisconnect()">Disconnect</button><br><br-->
-              <iframe src="./codes.txt"></iframe>
-              <input type="text" id="IP_setter" placeholder="IP"><br><br>
-              <input type="text" id="PORT_setter" placeholder="PORT"><br><br>
-              <button id="aceptarIPPORT" onclick="miWebSocket.setIPPORT()">Set IP/PORT</button><br><br>
-              <button id="boton_conectar" onclick="miWebSocket.doConnect()">Connect</button><br><br>
-              <input type="text" id="lang_src" placeholder="Idioma de imagen"><br><br>
-              <input type="text" id="lang_dest" placeholder="Idioma a traducir"><br><br>
-            	<button onclick="miWebSocket.sendText()">Send Languages</button><br><br>
-              <button onclick="miWebSocket.sendImage()">Send image</button><br><br>
-            	<button onclick="miWebSocket.doDisconnect()">Disconnect</button><br><br>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/miWebSocket.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-            miWebSocket.initialize();
+<html lang="en">
 
-            /*var IP = "0.0.0.0"
-            var PORT = "0000"
-            var ws = null
+<head>
+  <meta charset="UTF-8">
+  <title>ImageTranslator App</title>
 
-            document.addEventListener('deviceready', init(), false);
+  <script src="lib/onsen/js/onsenui.js"></script>
 
-            function init(){
-              IP = "192.168.0.108"
-              PORT = "9796"
-              document.querySelector('#mostrarDatos').innerHTML = "Preparado para conectar en ws://" + IP + ':' + PORT;
-            }
+  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mi_css.css">
 
-            function doConnect(){
-              ws = new WebSocket('ws://' + IP + ':' + PORT);
-              //Definimos las funciones del WebSocket
-              ws.onopen = function(evt) { onOpen(evt) };
-              ws.onclose = function(evt) { onClose(evt) };
-              ws.onmessage = function(evt) { onMessage(evt) };
-              ws.onerror = function(evt) { onError(evt) };
-            }
+</head>
 
-            function onOpen(evt){
-              document.querySelector('#mostrarDatos').innerHTML = "Socket conectado con exito";
-            }
+<body>
 
-            function onClose(evt){
-              document.querySelector('#mostrarDatos').innerHTML = "Cerrando socket...";
-            }
+  <ons-toolbar>
+    <div class="left">
+      <ons-icon id="boton-info" icon="ion-information-circled" size="25px, material:24px"></ons-icon>
+    </div>
+    <div id="titulo-app" class="center">ImageTranslator App</div>
+  </ons-toolbar>
 
-            function onMessage(evt){
-              document.querySelector('#mostrarDatos').innerHTML = evt.data;
-            }
+  <div id='encuadre'></div>
 
-            function onError(evt){
-              document.querySelector('#mostrarDatos').innerHTML = "Error de socket";
-          	  ws.close();
-            }
+  <div style="height: 200px; padding: 1px 0 0 0;">
+    <div id="contenedor-traduccion" class="card">
+      <h2 id="titulo-traduccion" class="card__title">Traduciendo ("origen" a "destino"):</h2>
+      <ons-progress-bar id="barra-carga" indeterminate style="visibility: hidden"></ons-progress-bar>
+      <div id="texto-traduccion" class="card__content"></div>
+    </div>
+  </div>
 
-            function doSend(message){
-              ws.send(message);
-            }
+  <div id="contenedor-botones">
+    <ons-fab id="boton-opciones" class="botones">
+      <ons-icon icon="ion-android-settings"></ons-icon>
+    </ons-fab>
 
-            function sendText() {
-          		doSend('Viva el vino');
-            }
+    <ons-fab id="boton-galeria" class="botones">
+      <ons-icon icon="ion-android-image"></ons-icon>
+    </ons-fab>
 
-            function doDisconnect() {
-          		ws.close();
-            }*/
+    <ons-fab id="boton-camara" class="botones">
+      <ons-icon icon="ion-android-camera"></ons-icon>
+    </ons-fab>
+  </div>
 
-        </script>
-    </body>
+  <div id="mask-popover" class="popover-mask popover-mask--material" style="visibility: hidden"></div>
+  <div id="popover" class="popover popover--material popover--left" style="top: 31%; left: 9%; visibility: hidden">
+    <div class="popover__arrow popover--material__arrow popover--left__arrow"></div>
+    <div class="popover__content popover--material__content popover--left__content">
+      <div style="text-align: center; opacity: 0.8; margin-top: -10px; margin-left: 6px">
+        <h4>Ip/Puerto del servidor</h4>
+        <p>
+          <ons-input id="IP_setter" modifier="underbar" placeholder="IP (ej: 192.168.0.0)" float></ons-input>
+        </p>
+        <p>
+          <ons-input id="PORT_setter" modifier="underbar" placeholder="PUERTO (ej: 9797)" float></ons-input>
+        </p>
+        <h4>Idiomas</h4>
+        <ons-row class="row">
+          Traducir de
+          <ons-select class="opciones-idioma" id="lang_src">
+            <select id="opciones-idiomas-origen" class="select-input">
+            </select>
+          </ons-select>
+        </ons-row>
+        <ons-row class="row row2">
+          a
+          <ons-select class="opciones-idioma" id="lang_dest">
+            <select id="opciones-idiomas-destino" class="select-input">
+            </select>
+          </ons-select>
+        </ons-row>
+        <p>
+          <ons-button id="botonAceptarOpciones">Aceptar</ons-button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="info-mask-popover" class="popover-mask popover-mask--material" style="visibility: hidden"></div>
+  <div id="info-popover" class="popover popover--material popover--left" style="top: 31%; left: 9%; visibility: hidden">
+    <div class="popover__arrow popover--material__arrow popover--left__arrow"></div>
+    <div class="popover__content popover--material__content popover--left__content" style="background-color: #fdb826">
+      <div style="text-align: center; opacity: 0.8; margin-top: -10px; margin-left: 6px">
+        <h1>INFO</h1>
+        <p>
+          Proyecto creado por:
+        </p>
+        <h4>Fco. Javier Hortelano Ruiz</h4>
+        <h4>José Mª Viñas Martínez</h4>
+        <p>
+          <ons-button id="botonCerrarInfo">Cerrar</ons-button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <ons-modal id="pantalla-carga" direction="up">
+    <div style="text-align: center">
+      <p>
+        <ons-icon icon="md-spinner" size="28px" spin></ons-icon> Cargando...
+      </p>
+    </div>
+  </ons-modal>
+
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/miWebSocket.js"></script>
+  <script type="text/javascript" src="js/mi_app.js"></script>
+  <script type="text/javascript" src="js/idiomas.js"></script>
+  <script type="text/javascript">
+    var modal = document.getElementById('pantalla-carga');
+    modal.show();
+
+    mi_app.initialize();
+    miWebSocket.initialize();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      introducir_idiomas_origen();
+      introducir_idiomas_destino();
+    }, false);
+
+    document.addEventListener("deviceready", function(event) {
+      document.getElementById('popover').style.visibility = 'visible';
+      document.getElementById('mask-popover').style.visibility = 'visible';
+      mi_app.cerrarPantallaCarga();
+    }, false);
+  </script>
+
+</body>
+
 </html>
