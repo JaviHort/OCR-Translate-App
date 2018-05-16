@@ -35,7 +35,8 @@ def analizarImagen(imagen, lenguaje='eng'):
     archivo_temporal = "{}.png"
     cv.imwrite(archivo_temporal, imagen)
     texto = ejecutarOCR(archivo_temporal, lenguaje)
-    os.remove(archivo_temporal)
+    #os.remove(archivo_temporal)
+    #texto.replace('\n', ' ')
     return texto
 
 

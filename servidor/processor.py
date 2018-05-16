@@ -13,7 +13,7 @@ def execute(pathFile, lang_src, lang_dest):
     #Analizamos con tesserocr la imagen indicando el lenguaje
     lenguaje = lang_src
     texto = opencv_OCR.analizarImagen(imagen, lenguaje)
-    
+    print('Habemus textum')
     #Traducimos con google translator indicando el idioma destino
     idioma_dest = lang_dest
     texto_traducido = googleTrans.traducir(texto, idioma_dest)
