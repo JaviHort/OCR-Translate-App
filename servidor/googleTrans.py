@@ -4,10 +4,13 @@
 from googletrans import Translator
 
 
-def traducir(texto, idioma_dest):
+def traducir(texto, idioma_dest, idioma_src):
     translator = Translator()
     
-    traduccion = translator.translate(texto, dest=idioma_dest)
+    if idioma_src == '':
+        idioma_src = 'auto'
+
+    traduccion = translator.translate(texto, dest=idioma_dest, src=idioma_src)
     texto_traducido = traduccion.text
     idioma_origen = traduccion.src
     idioma_destino = traduccion.dest
