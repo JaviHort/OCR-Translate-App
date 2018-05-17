@@ -1,0 +1,109 @@
+.botones {
+  position: static;
+}
+
+#contenedor-botones{
+  margin-top: 10%;
+}
+
+#boton-galeria {
+  margin-left: 38%;
+}
+
+#boton-camara {
+  margin-left: 2%;
+}
+
+#boton-opciones {
+  background-color: #c27a1a;
+  margin-left: 5%;
+}
+
+#boton-info{
+  margin-left: 30%
+}
+
+.popover-mask--material {
+  background-color: rgba(54, 54, 54, 0.63);
+}
+
+.popover--left__content {
+    width: 110%;
+}
+
+.opciones-idioma{
+  margin-top: -7px;
+  margin-left: 25px;
+  width: 158px;
+}
+
+.row{
+  margin-top: 5%;
+}
+
+.row2{
+  width: 192px;
+  margin-left: 71px;
+}
+
+h5{
+  font: icon;
+}
+
+#titulo-app {
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+#encuadre{
+  background: url("../img/image.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  padding-left: 0;
+  padding-right: 0;
+  height: 228px;
+  width: 342px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20%;
+  display: block;
+}
+
+#contenedor-traduccion{
+  margin-top: 5%;
+  background-color: aquamarine;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  max-height: 100%;
+}
+
+#texto-traduccion{
+  overflow: scroll;
+  max-height: 130px;
+}
+
+#botonAceptarOpciones{
+  margin-left: auto;
+}
+
+#pantalla-carga{
+  display: inline;
+  z-index: 200000 !important;
+}
+
+ons-alert-dialog{
+  z-index: 300001 !important;
+}
+
+#info-popover{
+  width: 74%;
+}
+
+:not(ons-toolbar-button):not(ons-action-sheet-button) > .ons-icon--ion {
+    line-height: 0.75em;
+    vertical-align: -18%;
+}
