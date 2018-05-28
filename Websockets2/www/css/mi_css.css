@@ -3,7 +3,7 @@
 }
 
 #contenedor-botones{
-  margin-top: 10%;
+  margin-top: 6%;
 }
 
 #boton-galeria {
@@ -67,12 +67,12 @@ h5{
   width: 342px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20%;
+  margin-top: 17%;
   display: block;
 }
 
 #contenedor-traduccion{
-  margin-top: 5%;
+  margin-top: 2%;
   background-color: aquamarine;
   display: block;
   margin-left: auto;

@@ -81,8 +81,10 @@ var miWebSocket = {
       sourceType: Camera.PictureSourceType.CAMERA,
       destinationType: Camera.DestinationType.DATA_URL, //Base64
       encodingType: 0, //JPEG
-      targetWidth: 3400,
-      targetHeight: 2550,
+      targetWidth: 1500,
+      targetHeight: 1125,
+      /*targetWidth: 2000,
+      targetHeight: 1500,*/
       correctOrientation: true,
       cameraDirection: 1
     };
@@ -104,8 +106,10 @@ var miWebSocket = {
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
       destinationType: Camera.DestinationType.DATA_URL, //Base64
       encodingType: 0, //JPEG
-      targetWidth: 3400,
-      targetHeight: 2550,
+      targetWidth: 1500,
+      targetHeight: 1125,
+      /*targetWidth: 2000,
+      targetHeight: 1500,*/
       correctOrientation: true,
       cameraDirection: 1
     };

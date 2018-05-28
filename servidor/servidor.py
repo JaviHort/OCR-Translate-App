@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+    # -*- coding: utf-8 -*-
 import time
 from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 import googleTrans
@@ -142,8 +142,11 @@ class SimpleEcho(WebSocket):
             archivo.close()
             print("Imagen recibida. - " + time.strftime("%c"))
             #self.sendMessage(unicode("Desde servidor -> Imagen recibida"))
-            texto_traducido = processor.execute('imagen.png', clientes[self.address]['lang_src'], clientes[self.address]['lang_dest'], fromOCRToTrans[clientes[self.address]['lang_src']])
-            #os.remove("imagen.png")
+            texto_traducido = processor.execute('imagen.png', 
+                                                clientes[self.address]['lang_src'], 
+                                                clientes[self.address]['lang_dest'], 
+                                                fromOCRToTrans[clientes[self.address]['lang_src']])
+            os.remove("imagen.png")
             self.sendMessage(unicode(texto_traducido))
             clientes[self.address]['status'] = "conectado"
         

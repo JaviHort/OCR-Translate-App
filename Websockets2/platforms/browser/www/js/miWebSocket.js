@@ -37,6 +37,10 @@ var miWebSocket = {
   onClose: function(evt) {
     estadoWebSocket = "desconectado";
     mi_app.cerrarPantallaCarga();
+    lan_s = "";
+    lan_d = "";
+    document.querySelector('#titulo-traduccion').innerHTML = 'Traduciendo ("origen" a "destino"):';
+    document.querySelector('#texto-traduccion').innerHTML = "";
     document.getElementById('popover').style.visibility = 'visible';
     document.getElementById('mask-popover').style.visibility = 'visible';
     document.getElementById('barra-carga').style.visibility = "hidden";
@@ -61,7 +65,7 @@ var miWebSocket = {
     if ((lan_s != document.getElementById('lang_src').value) || (lan_d != document.getElementById('lang_dest').value)) {
       lan_s = document.getElementById('lang_src').value;
       lan_d = document.getElementById('lang_dest').value;
-      miWebSocket.doSend(lan_s + '_' + lan_d);
+      miWebSocket.doSend(lan_s + ';' + lan_d);
       document.querySelector('#titulo-traduccion').innerHTML = 'Traduciendo ("' + lan_s + '" a "' + lan_d + '"):';
       document.querySelector('#texto-traduccion').innerHTML = "";
       document.getElementById('encuadre').style.backgroundImage = "url('img/image.png')";
@@ -77,8 +81,10 @@ var miWebSocket = {
       sourceType: Camera.PictureSourceType.CAMERA,
       destinationType: Camera.DestinationType.DATA_URL, //Base64
       encodingType: 0, //JPEG
-      targetWidth: 3000,
-      targetHeight: 2250,
+      targetWidth: 1500,
+      targetHeight: 1125,
+      /*targetWidth: 2000,
+      targetHeight: 1500,*/
       correctOrientation: true,
       cameraDirection: 1
     };
@@ -100,8 +106,10 @@ var miWebSocket = {
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
       destinationType: Camera.DestinationType.DATA_URL, //Base64
       encodingType: 0, //JPEG
-      targetWidth: 3000,
-      targetHeight: 2250,
+      targetWidth: 1500,
+      targetHeight: 1125,
+      /*targetWidth: 2000,
+      targetHeight: 1500,*/
       correctOrientation: true,
       cameraDirection: 1
     };
