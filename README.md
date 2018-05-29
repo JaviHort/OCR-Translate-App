@@ -9,7 +9,9 @@ Aplicación para Android, iOS y Windows Phone con servidor en Python. Mediante e
 ## What is it?
 Android, iOS and Windows Phone application with Python server. Through this software, you can get the text from an image and translate it to almost every language.
 
-## Instalar librerías / Packages installation
+## Servidor / Server
+
+### Instalar librerías / Packages installation
 Bajo el entorno Python2.7; es necesario tener instalado la herramienta **`pip`**.
 
 Under environment Python2.7; it is necessary to have the tool **`pip`**.
