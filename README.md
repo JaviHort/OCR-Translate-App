@@ -29,3 +29,9 @@ $ pip install tesserocr
 $ pip install opencv-python
 $ pip install googletrans
 ```
+
+## Aplicación móvil / Mobile Application
+
+Para instalar la aplicación móvil, simplemente hay que entrar en la carpeta **`Client Application`**, escanear con el móvil el código QR y se instalará sola.
+
+For installing the app, you have to enter the folder **`Client Application`**, scan the QR code with your mobile phone, and installation begins automatically.
