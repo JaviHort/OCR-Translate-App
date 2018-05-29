@@ -1,7 +1,0 @@
-# Entorno: Python 2.7
-
-# Instalar librerías
-
-$ pip install tesserocr
-$ pip install opencv-python
-$ pip install googletrans
