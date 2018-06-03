@@ -1,4 +1,4 @@
-# OCR-Translate-IA-
+# OCR-Translate-App
 Proyecto de prácticas de la asignatura Inteligencia Ambiental.
 
 Practice project for the subject Ubiquitous Computing
